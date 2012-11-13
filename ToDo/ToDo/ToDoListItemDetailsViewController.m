@@ -22,6 +22,7 @@
 
 
 
+
 @end
 
 @implementation ToDoListItemDetailsViewController
@@ -76,7 +77,8 @@
     
     int i=0;
     
-    if(self.switchNotification.on)
+    //if(self.switchNotification.on)
+    if([self.switchNotification isOn])
     {
         i=1;
     }
@@ -84,6 +86,10 @@
     
     NSString *sss=[NSString stringWithFormat:@"%d",i];
     NSLog(@"%@",sss);
+    
+    NSNumber *n=[NSNumber numberWithInt:i];
+    
+    self.listItem.notification=n;
     self.titleField.text=str;
     
     
@@ -94,6 +100,5 @@
     [self.navigationController popViewControllerAnimated:YES];
     
 }
-
 
 @end
