@@ -13,6 +13,8 @@
 @interface ToDoListItemDetailsViewController ()
 
 @property (nonatomic,weak) IBOutlet UITextField *titleField;
+@property (nonatomic,weak) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic,weak) IBOutlet UISwitch *switchNotification;
 
 @property (nonatomic,readonly) NSManagedObjectContext *managedObjectContext;
 
@@ -26,6 +28,8 @@
 
 @synthesize titleField=_titleField;
 @synthesize listItem=_listItem;
+@synthesize datePicker=_datePicker;
+@synthesize switchNotification=_switchNotification;
 
 - (void)viewDidLoad
 {
@@ -55,6 +59,35 @@
 -(void)save:(id)sender{
     
     self.listItem.title=self.titleField.text;
+    
+    ///////////
+    
+    NSDate *pickerDate=[self.datePicker date];
+    
+
+    self.listItem.dueDateTime=pickerDate;
+    
+    NSDateFormatter *df=[[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterMediumStyle];
+    NSString *str=[df stringFromDate:pickerDate];
+    
+    NSLog(@"%@",str);
+    
+    int i=0;
+    
+    if(self.switchNotification.on)
+    {
+        i=1;
+    }
+    
+    
+    NSString *sss=[NSString stringWithFormat:@"%d",i];
+    NSLog(@"%@",sss);
+    self.titleField.text=str;
+    
+    
+    ///////////////////
     
     [self.managedObjectContext save:nil];
     
