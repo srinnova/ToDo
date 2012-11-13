@@ -10,7 +10,7 @@
 
 @class ToDoListItem;
 
-@interface ToDoListItemDetailsViewController : UITableViewController
+@interface ToDoListItemDetailsViewController : UITableViewController <UITextFieldDelegate>
 
 @property (nonatomic,strong) ToDoListItem *listItem;
 
