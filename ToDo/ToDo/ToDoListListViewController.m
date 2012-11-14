@@ -18,6 +18,8 @@
 
 @property (nonatomic,readonly) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic,weak) ToDoList *listForEdit;
+
 -(IBAction)addList:(id)sender;
 
 @end
@@ -42,6 +44,13 @@
     self.lists=[self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     [self.tableView reloadData];
 
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +90,9 @@
     if([segue.identifier isEqualToString:@"ListToEditListSegue"]){
         
         ToDoEditListViewController *edit=segue.destinationViewController;
-        edit.list.title=@"title";
+       //edit.list.title=@"titleeee";
+        edit.listTitle=@"hythj";
+        edit.list=self.listForEdit;
     }
 }
 
@@ -126,15 +137,32 @@
     NSLog(@"add long press");
     
     
+    
     return cell;
 }
 
--(void) handleLongPress:(UILongPressGestureRecognizer *) segue{
+-(void) handleLongPress:(UILongPressGestureRecognizer *) gestureRecognizer{
     
     NSLog(@"detecting long press");
     
+    UITableView* tableView=(UITableView *)self.view;
     
+    CGPoint p=[gestureRecognizer locationInView:self.view];
+    
+    
+    
+    NSIndexPath *indexPath=[tableView indexPathForRowAtPoint:p];
+    
+    self.listForEdit=[self.lists objectAtIndex:indexPath.row];
+    
+    if(indexPath==nil){
+        NSLog(@"ne e selentiran objekt");
+    }
+    else{
     [self performSegueWithIdentifier:@"ListToEditListSegue" sender:self];
+        
+        self.listForEdit=[self.lists objectAtIndex:indexPath.row];
+    }
 
 }
 

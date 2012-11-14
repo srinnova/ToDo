@@ -9,6 +9,7 @@
 #import "ToDoEditListViewController.h"
 #import "ToDoAppDelegate.h"
 #import "ToDoList+Customization.h"
+#import "ToDoList.h"
 
 
 @interface ToDoEditListViewController ()
@@ -24,6 +25,7 @@
 @implementation ToDoEditListViewController
 @synthesize list=_list;
 @synthesize listTitleField=_listTitleField;
+@synthesize listTitle=_listTitle;
 
 - (void)viewDidLoad
 {
@@ -34,7 +36,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.listTitleField.text=@"text";
+    
+    self.listTitleField.text=self.list.title;
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +53,13 @@
 #pragma mark- IBActions
 
 -(void)save:(id)sender{
+   
+    self.list.title=self.listTitleField.text;
+    
+    [self.managedObjectContext save:nil];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
     
 }
 

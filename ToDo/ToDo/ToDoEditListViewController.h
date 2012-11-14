@@ -12,5 +12,6 @@
 @interface ToDoEditListViewController : UITableViewController
 
 @property(nonatomic,strong)ToDoList *list;
+@property (nonatomic,strong) NSString *listTitle;
 
 @end

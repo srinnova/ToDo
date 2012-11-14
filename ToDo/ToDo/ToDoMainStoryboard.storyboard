@@ -47,7 +47,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="eeP-8V-Kft" kind="modal" identifier="ListToEditListSegue" id="pzh-3c-p6t"/>
+                        <segue destination="h9s-kH-tRk" kind="push" identifier="ListToEditListSegue" id="Kjk-AJ-t8t"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6V-iN-Ici" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,6 +160,7 @@
         <!--To Do List Item Details View Controller - ListItem Details-->
         <scene sceneID="IPH-6x-DUt">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MU4-9m-biA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="pce-20-t48" customClass="ToDoListItemDetailsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="OMa-zO-BIH">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
@@ -168,11 +169,11 @@
                         <sections>
                             <tableViewSection headerTitle="Details" id="dEd-h1-1Ov">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="160" id="fJp-1S-3wU">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="160" id="fJp-1S-3wU">
                                         <rect key="frame" x="0.0" y="46" width="320" height="161"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="159"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="159"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugq-T3-a85">
@@ -273,7 +274,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="titleField" destination="ugq-T3-a85" id="y5W-fJ-FQ8"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MU4-9m-biA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1359" y="-431"/>
         </scene>
@@ -295,26 +295,40 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-69" y="-429"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="he9-Aw-t2g">
-            <objects>
-                <navigationController id="eeP-8V-Kft" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="tGy-tf-qDK"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8yV-Ob-CTx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="h9s-kH-tRk" kind="relationship" relationship="rootViewController" id="zdb-x7-zpr"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Fy-ho-cyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="766" y="-1142"/>
-        </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ToDoEditListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoEditListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="listTitleField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ToDoListItemDetailsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoListItemDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="switchNotification" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="titleField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ToDoListItemListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoListItemListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addListItem:"/>
+            </relationships>
+        </class>
+        <class className="ToDoListListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoListListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addList:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
