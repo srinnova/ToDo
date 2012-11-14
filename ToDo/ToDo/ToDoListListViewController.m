@@ -10,6 +10,7 @@
 #import "ToDoAppDelegate.h"
 #import "ToDoList.h"
 #import "ToDoListItemListViewController.h"
+#import "ToDoEditListViewController.h"
 
 @interface ToDoListListViewController ()
 
@@ -75,8 +76,13 @@
         
         ToDoListItemListViewController *listItemList=segue.destinationViewController;
         listItemList.list=[self.lists objectAtIndex:self.tableView.indexPathForSelectedRow.row];
-    }    
+    }
     
+    if([segue.identifier isEqualToString:@"ListToEditListSegue"]){
+        
+        ToDoEditListViewController *edit=segue.destinationViewController;
+        edit.list.title=@"title";
+    }
 }
 
 -(NSManagedObjectContext *)managedObjectContext{
@@ -104,9 +110,32 @@
     
     ToDoList *currentList=[self.lists objectAtIndex:indexPath.row];
     
+    
+    
     cell.textLabel.text=currentList.title;
     
+    
+    
+    
+    ////long press
+    
+    UILongPressGestureRecognizer *lpgr=[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration=3.0;
+    [cell addGestureRecognizer:lpgr];
+
+    NSLog(@"add long press");
+    
+    
     return cell;
+}
+
+-(void) handleLongPress:(UILongPressGestureRecognizer *) segue{
+    
+    NSLog(@"detecting long press");
+    
+    
+    [self performSegueWithIdentifier:@"ListToEditListSegue" sender:self];
+
 }
 
 
@@ -160,7 +189,7 @@
 */
 
 #pragma mark - Table view delegate
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
@@ -170,6 +199,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
+//}
 
 @end

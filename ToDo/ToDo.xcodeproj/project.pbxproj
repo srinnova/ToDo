@@ -25,6 +25,7 @@
 		41906799164AA20E00953614 /* ToDoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 41906798164AA20E00953614 /* ToDoList.m */; };
 		4190679C164AA20F00953614 /* ToDoListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4190679B164AA20F00953614 /* ToDoListItem.m */; };
 		4190679F164AB02600953614 /* ToDoList+Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4190679E164AB02500953614 /* ToDoList+Customization.m */; };
+		41DA44B01653D5470063DFCF /* ToDoEditListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DA44AF1653D5460063DFCF /* ToDoEditListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		4190679B164AA20F00953614 /* ToDoListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoListItem.m; sourceTree = "<group>"; };
 		4190679D164AB02500953614 /* ToDoList+Customization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ToDoList+Customization.h"; sourceTree = "<group>"; };
 		4190679E164AB02500953614 /* ToDoList+Customization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ToDoList+Customization.m"; sourceTree = "<group>"; };
+		41DA44AE1653D5460063DFCF /* ToDoEditListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoEditListViewController.h; sourceTree = "<group>"; };
+		41DA44AF1653D5460063DFCF /* ToDoEditListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoEditListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 		41906726164A811300953614 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				41DA44AE1653D5460063DFCF /* ToDoEditListViewController.h */,
+				41DA44AF1653D5460063DFCF /* ToDoEditListViewController.m */,
 				4190679A164AA20E00953614 /* ToDoListItem.h */,
 				4190679B164AA20F00953614 /* ToDoListItem.m */,
 				41906797164AA20E00953614 /* ToDoList.h */,
@@ -215,6 +220,7 @@
 				41906799164AA20E00953614 /* ToDoList.m in Sources */,
 				4190679C164AA20F00953614 /* ToDoListItem.m in Sources */,
 				4190679F164AB02600953614 /* ToDoList+Customization.m in Sources */,
+				41DA44B01653D5470063DFCF /* ToDoEditListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
