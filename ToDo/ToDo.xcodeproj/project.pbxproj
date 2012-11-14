@@ -25,6 +25,8 @@
 		41906799164AA20E00953614 /* ToDoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 41906798164AA20E00953614 /* ToDoList.m */; };
 		4190679C164AA20F00953614 /* ToDoListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4190679B164AA20F00953614 /* ToDoListItem.m */; };
 		4190679F164AB02600953614 /* ToDoList+Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4190679E164AB02500953614 /* ToDoList+Customization.m */; };
+		41B23C611653FD8700BB1556 /* ToDoHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B23C601653FD8600BB1556 /* ToDoHelpViewController.m */; };
+		41B23C64165402BE00BB1556 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41B23C63165402BE00BB1556 /* img.jpg */; };
 		41DA44B01653D5470063DFCF /* ToDoEditListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DA44AF1653D5460063DFCF /* ToDoEditListViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,9 @@
 		4190679B164AA20F00953614 /* ToDoListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoListItem.m; sourceTree = "<group>"; };
 		4190679D164AB02500953614 /* ToDoList+Customization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ToDoList+Customization.h"; sourceTree = "<group>"; };
 		4190679E164AB02500953614 /* ToDoList+Customization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ToDoList+Customization.m"; sourceTree = "<group>"; };
+		41B23C5F1653FD8600BB1556 /* ToDoHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoHelpViewController.h; sourceTree = "<group>"; };
+		41B23C601653FD8600BB1556 /* ToDoHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoHelpViewController.m; sourceTree = "<group>"; };
+		41B23C63165402BE00BB1556 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		41DA44AE1653D5460063DFCF /* ToDoEditListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoEditListViewController.h; sourceTree = "<group>"; };
 		41DA44AF1653D5460063DFCF /* ToDoEditListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoEditListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +112,7 @@
 		41906726164A811300953614 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				41B23C63165402BE00BB1556 /* img.jpg */,
 				41DA44AE1653D5460063DFCF /* ToDoEditListViewController.h */,
 				41DA44AF1653D5460063DFCF /* ToDoEditListViewController.m */,
 				4190679A164AA20E00953614 /* ToDoListItem.h */,
@@ -126,6 +132,8 @@
 				4190678C164A95C100953614 /* ToDoListItemListViewController.m */,
 				4190678E164A961500953614 /* ToDoListItemDetailsViewController.h */,
 				4190678F164A961500953614 /* ToDoListItemDetailsViewController.m */,
+				41B23C5F1653FD8600BB1556 /* ToDoHelpViewController.h */,
+				41B23C601653FD8600BB1556 /* ToDoHelpViewController.m */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -201,6 +209,7 @@
 				41906735164A811300953614 /* Default@2x.png in Resources */,
 				41906737164A811300953614 /* Default-568h@2x.png in Resources */,
 				41906787164A92ED00953614 /* ToDoMainStoryboard.storyboard in Resources */,
+				41B23C64165402BE00BB1556 /* img.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +230,7 @@
 				4190679C164AA20F00953614 /* ToDoListItem.m in Sources */,
 				4190679F164AB02600953614 /* ToDoList+Customization.m in Sources */,
 				41DA44B01653D5470063DFCF /* ToDoEditListViewController.m in Sources */,
+				41B23C611653FD8700BB1556 /* ToDoHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

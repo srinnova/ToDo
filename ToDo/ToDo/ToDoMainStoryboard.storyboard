@@ -12,6 +12,17 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vcP-w7-qmE">
+                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="Help" id="bV3-Od-4Pu">
+                                    <connections>
+                                        <action selector="help:" destination="Isg-y2-oKo" id="JhI-rh-grB"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListCell" textLabel="eoG-8j-DvQ" style="IBUITableViewCellStyleDefault" id="szv-1c-wO1">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -48,6 +59,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="h9s-kH-tRk" kind="push" identifier="ListToEditListSegue" id="Kjk-AJ-t8t"/>
+                        <segue destination="dyf-5x-vRk" kind="push" identifier="ListToHelpSegue" id="fem-6x-Fpo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6V-iN-Ici" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,6 +168,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPW-vI-9ID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="861" y="-431"/>
+        </scene>
+        <!--To Do Help View Controller-->
+        <scene sceneID="3hF-Yx-fXr">
+            <objects>
+                <tableViewController id="dyf-5x-vRk" customClass="ToDoHelpViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="wDT-UJ-Wj6">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Help" id="11A-13-UP1">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="455" id="LZO-xQ-G6I">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="457"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="454"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nf3-Hp-xYX">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="232" id="I66-3h-l7Z"/>
+                                                        <constraint firstAttribute="width" constant="300" id="kM2-As-95H"/>
+                                                    </constraints>
+                                                    <string key="text">The ToDo iOS Mobile application helps you organize your activities. You can Add TODo lists by touching the + bar button. You can edit the List by long pressing, or remove the List by scrolling over the List. You can see the List content by touching the list. you can add new Tasks/list items by touching +. You can Edit/Remove the list item in a simular way as the Laediting/removing the List. if you've set the notifications on, the app will provide a notification. You san set some features, in adition.</string>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="img.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LDB-B7-jVU">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="189" id="Oho-B4-rwM"/>
+                                                        <constraint firstAttribute="height" constant="211" id="a1r-QJ-As2"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="LDB-B7-jVU" firstAttribute="leading" secondItem="LZO-xQ-G6I" secondAttribute="leading" constant="58" id="H1G-7e-XCW"/>
+                                            <constraint firstItem="Nf3-Hp-xYX" firstAttribute="top" secondItem="LZO-xQ-G6I" secondAttribute="top" constant="209" id="JOf-CL-XhV"/>
+                                            <constraint firstItem="LDB-B7-jVU" firstAttribute="top" secondItem="LZO-xQ-G6I" secondAttribute="top" constant="7" id="fWN-U5-mdL"/>
+                                            <constraint firstItem="Nf3-Hp-xYX" firstAttribute="centerX" secondItem="LZO-xQ-G6I" secondAttribute="centerX" type="default" id="jfZ-t4-jDB"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="dyf-5x-vRk" id="fcb-Ya-l7F"/>
+                            <outlet property="delegate" destination="dyf-5x-vRk" id="xUL-vS-ffR"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="18N-k6-9g2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="488"/>
         </scene>
         <!--To Do List Item Details View Controller - ListItem Details-->
         <scene sceneID="IPH-6x-DUt">
@@ -296,16 +364,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="-69" y="-429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="img.jpg" width="121" height="131"/>
+    </resources>
     <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
         <class className="ToDoEditListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoEditListViewController.h"/>
             <relationships>
                 <relationship kind="action" name="save:"/>
                 <relationship kind="outlet" name="listTitleField" candidateClass="UITextField"/>
             </relationships>
+        </class>
+        <class className="ToDoHelpViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoHelpViewController.h"/>
         </class>
         <class className="ToDoListItemDetailsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoListItemDetailsViewController.h"/>
@@ -326,6 +397,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoListListViewController.h"/>
             <relationships>
                 <relationship kind="action" name="addList:"/>
+                <relationship kind="action" name="help:"/>
             </relationships>
         </class>
     </classes>

@@ -11,6 +11,7 @@
 #import "ToDoList.h"
 #import "ToDoListItemListViewController.h"
 #import "ToDoEditListViewController.h"
+#import "ToDoHelpViewController.h"
 
 @interface ToDoListListViewController ()
 
@@ -21,6 +22,7 @@
 @property (nonatomic,weak) ToDoList *listForEdit;
 
 -(IBAction)addList:(id)sender;
+-(IBAction)help:(id)sender;
 
 @end
 
@@ -79,6 +81,13 @@
     
 }
 
+-(void)help:(id)sender{
+    
+    NSLog(@"ListToHelpSegue set");
+    
+    [self performSegueWithIdentifier:@"ListToHelpSegue" sender:self];    
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     if([segue.identifier isEqualToString:@"ListListToListItemListSegue"]){
@@ -93,6 +102,13 @@
        //edit.list.title=@"titleeee";
         edit.listTitle=@"hythj";
         edit.list=self.listForEdit;
+    }
+    if([segue.identifier isEqualToString:@"ListToHelpSegue"]){
+        
+        NSLog(@"ListToHelpSegue");
+        
+        ToDoHelpViewController *helview=segue.destinationViewController;
+
     }
 }
 
