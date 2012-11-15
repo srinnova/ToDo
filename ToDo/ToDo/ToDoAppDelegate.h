@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class ToDoListListViewController;
+
+
 @interface ToDoAppDelegate : UIResponder <UIApplicationDelegate>
 
 
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property(retain,nonatomic) ToDoListListViewController *viewController;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

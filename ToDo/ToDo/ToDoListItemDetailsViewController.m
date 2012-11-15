@@ -99,6 +99,35 @@
     
     ///////////////////
     
+    
+    
+    //////////Schedule local notifications
+    
+    UILocalNotification *localNotif=[[UILocalNotification alloc]init];
+    if(localNotif==nil)
+    {
+        NSLog(@"no notif init");
+    }
+    
+    localNotif.fireDate=pickerDate;
+    localNotif.timeZone=[NSTimeZone defaultTimeZone];
+    
+    localNotif.alertBody=self.titleField.text;
+    localNotif.alertAction=@"View";
+    
+    localNotif.soundName=UILocalNotificationDefaultSoundName;
+    localNotif.applicationIconBadgeNumber=1;
+    
+    
+    NSDictionary *infoDict=[NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
+    localNotif.userInfo=infoDict;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    
+    
+    
+    /////////
+    
     [self.managedObjectContext save:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
