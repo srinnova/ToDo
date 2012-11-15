@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong)ToDoList *list;
 
+@property (nonatomic,strong) UIColor *bcgColor;
+
 @end

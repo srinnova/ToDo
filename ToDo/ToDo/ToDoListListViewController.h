@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface ToDoListListViewController : UITableViewController
+
+@property (nonatomic,strong)UIColor *color;
+@property (nonatomic)BOOL *notifications;
+
+
+
 
 @end

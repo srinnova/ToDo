@@ -31,6 +31,7 @@
 @synthesize listItem=_listItem;
 @synthesize datePicker=_datePicker;
 @synthesize switchNotification=_switchNotification;
+@synthesize back=_back;
 
 
 
@@ -101,6 +102,26 @@
     [self.managedObjectContext save:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    //cell.backgroundColor=self.bcg.color;
+    //cell.textLabel.backgroundColor=self.bcg.color;
+    if(self.back==nil)
+    {
+        cell.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        cell.textLabel.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        
+    }
+    else{
+        cell.backgroundColor=self.back;
+        cell.textLabel.backgroundColor=self.back;
+    }
+    
     
 }
 

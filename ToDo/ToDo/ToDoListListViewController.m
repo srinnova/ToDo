@@ -12,6 +12,9 @@
 #import "ToDoListItemListViewController.h"
 #import "ToDoEditListViewController.h"
 #import "ToDoHelpViewController.h"
+#import "ToDoSettingsViewController.h"
+
+
 
 @interface ToDoListListViewController ()
 
@@ -21,13 +24,20 @@
 
 @property (nonatomic,weak) ToDoList *listForEdit;
 
+
+
 -(IBAction)addList:(id)sender;
 -(IBAction)help:(id)sender;
+-(IBAction)settings:(id)sender;
 
 @end
 
 @implementation ToDoListListViewController
 @synthesize lists=_lists;
+
+@synthesize color=_color;
+@synthesize notifications=_notifications;
+
 
 
 
@@ -87,6 +97,11 @@
     
     [self performSegueWithIdentifier:@"ListToHelpSegue" sender:self];    
 }
+-(void)settings:(id)sender{
+    NSLog(@"ListToSettingsSegue");
+    
+    [self performSegueWithIdentifier:@"ListToSettingsSegue" sender:self];
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
@@ -94,6 +109,7 @@
         
         ToDoListItemListViewController *listItemList=segue.destinationViewController;
         listItemList.list=[self.lists objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        listItemList.bcgColor=self.color;
     }
     
     if([segue.identifier isEqualToString:@"ListToEditListSegue"]){
@@ -102,13 +118,23 @@
        //edit.list.title=@"titleeee";
         edit.listTitle=@"hythj";
         edit.list=self.listForEdit;
+        edit.back=self.color;
     }
     if([segue.identifier isEqualToString:@"ListToHelpSegue"]){
         
         NSLog(@"ListToHelpSegue");
         
         ToDoHelpViewController *helview=segue.destinationViewController;
+        helview.back=self.color;
 
+    }
+    if([segue.identifier isEqualToString:@"ListToSettingsSegue"]){
+        
+        NSLog(@"ListToSettingsSegue");
+        
+        ToDoSettingsViewController *settings=segue.destinationViewController;
+        settings.list=self;
+        
     }
 }
 
@@ -232,17 +258,24 @@
 }
 */
 
-#pragma mark - Table view delegate
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-//}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+
+        //cell.backgroundColor=self.bcg.color;
+        //cell.textLabel.backgroundColor=self.bcg.color;
+    if(self.color==nil)
+    {
+    cell.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        cell.textLabel.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    }
+    else{
+        cell.backgroundColor=self.color;
+        cell.textLabel.backgroundColor=self.color;
+    }
+    
+
+}
 
 @end

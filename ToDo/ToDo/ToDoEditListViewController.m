@@ -26,6 +26,7 @@
 @synthesize list=_list;
 @synthesize listTitleField=_listTitleField;
 @synthesize listTitle=_listTitle;
+@synthesize back=_back;
 
 - (void)viewDidLoad
 {
@@ -63,4 +64,23 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    //cell.backgroundColor=self.bcg.color;
+    //cell.textLabel.backgroundColor=self.bcg.color;
+    if(self.back==nil)
+    {
+        cell.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        cell.textLabel.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        
+    }
+    else{
+        cell.backgroundColor=self.back;
+        cell.textLabel.backgroundColor=self.back;
+    }
+    
+    
+}
 @end

@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong) ToDoListItem *listItem;
 
+@property (nonatomic,weak) UIColor *back;
+
 @end

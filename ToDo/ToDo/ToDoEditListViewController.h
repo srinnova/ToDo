@@ -14,4 +14,7 @@
 @property(nonatomic,strong)ToDoList *list;
 @property (nonatomic,strong) NSString *listTitle;
 
+
+@property (nonatomic,weak) UIColor *back;
+
 @end

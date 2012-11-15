@@ -22,7 +22,7 @@
 
 @implementation ToDoListItemListViewController
 @synthesize list=_list;
-
+@synthesize bcgColor=_bcgColor;
 
 
 
@@ -55,6 +55,7 @@
     if([segue.identifier isEqualToString:@"ListItemListToListDetailsSegue"]){
         ToDoListItemDetailsViewController *listItemDetail=segue.destinationViewController;
         listItemDetail.listItem=[self.list.sortedListItems objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        listItemDetail.back=self.bcgColor;
         
     }
     
@@ -72,6 +73,8 @@
     newListItem.created=[NSDate date];
     newListItem.notification=NO;
     newListItem.list=self.list;
+    
+    
     
     [self.managedObjectContext save:nil];
     
@@ -131,22 +134,24 @@
 }
 
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    //cell.backgroundColor=self.bcg.color;
+    //cell.textLabel.backgroundColor=self.bcg.color;
+    if(self.bcgColor==nil)
+    {
+        cell.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        cell.textLabel.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    }
+    else{
+        cell.backgroundColor=self.bcgColor;
+        cell.textLabel.backgroundColor=self.bcgColor;
+    }
+    
+    
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -159,5 +164,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+
 
 @end
