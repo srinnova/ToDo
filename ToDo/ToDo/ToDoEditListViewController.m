@@ -55,11 +55,24 @@
 
 -(void)save:(id)sender{
    
+    if([self.listTitleField.text isEqualToString:@""])
+    {
+        NSLog(@"no title input");
+        [[[UIAlertView alloc]
+           initWithTitle:@"Allert" message:@"Insert title" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
+        
+    }
+    else
+    {
+        
+    NSLog(@"new title input");
+        
     self.list.title=self.listTitleField.text;
     
     [self.managedObjectContext save:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
+    }
     
     
 }

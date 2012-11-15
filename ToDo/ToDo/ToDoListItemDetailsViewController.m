@@ -34,7 +34,15 @@
 @synthesize back=_back;
 
 
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if(textField==self.titleField)
+    {
+        [textField resignFirstResponder];
+        [self becomeFirstResponder];
+    }
+    return YES;
+}
 
 - (void)viewDidLoad
 {
@@ -63,9 +71,18 @@
 #pragma mark - IBActions
 -(void)save:(id)sender{
     
+    if([self.titleField.text isEqualToString:@""])
+    {
+        NSLog(@"no title input");
+        [[[UIAlertView alloc]
+          initWithTitle:@"Allert" message:@"Insert title" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
+        
+    }
+    else
+    {
     self.listItem.title=self.titleField.text;
     
-    ///////////
+    /////////// retrieeve date an notificationd
     
     NSDate *pickerDate=[self.datePicker date];
     
@@ -81,7 +98,7 @@
     
     int i=0;
     
-    //if(self.switchNotification.on)
+    
     if([self.switchNotification isOn])
     {
         i=1;
@@ -103,6 +120,10 @@
     
     //////////Schedule local notifications
     
+    if([self.switchNotification isOn])
+    {
+        NSLog(@"schedule notifications");
+        
     UILocalNotification *localNotif=[[UILocalNotification alloc]init];
     if(localNotif==nil)
     {
@@ -124,13 +145,18 @@
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     
-    
-    
+    }
+    else
+    {
+        NSLog(@"not scheduled notification");
+    }
     /////////
     
     [self.managedObjectContext save:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
+        
+    }
     
 }
 
