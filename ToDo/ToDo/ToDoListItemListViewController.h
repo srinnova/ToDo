@@ -15,5 +15,6 @@
 @property (nonatomic,strong)ToDoList *list;
 
 @property (nonatomic,strong) UIColor *bcgColor;
+@property (nonatomic)BOOL *globalNotif;
 
 @end

@@ -23,6 +23,7 @@
 @implementation ToDoListItemListViewController
 @synthesize list=_list;
 @synthesize bcgColor=_bcgColor;
+@synthesize globalNotif=_globalNotif;
 
 
 
@@ -56,6 +57,7 @@
         ToDoListItemDetailsViewController *listItemDetail=segue.destinationViewController;
         listItemDetail.listItem=[self.list.sortedListItems objectAtIndex:self.tableView.indexPathForSelectedRow.row];
         listItemDetail.back=self.bcgColor;
+        listItemDetail.globalNotifications=self.globalNotif;
         
     }
     

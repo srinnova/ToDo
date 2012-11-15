@@ -15,5 +15,5 @@
 @property (nonatomic,strong) ToDoListItem *listItem;
 
 @property (nonatomic,weak) UIColor *back;
-
+@property (nonatomic) BOOL *globalNotifications;
 @end

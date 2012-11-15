@@ -32,6 +32,7 @@
 @synthesize datePicker=_datePicker;
 @synthesize switchNotification=_switchNotification;
 @synthesize back=_back;
+@synthesize globalNotifications=_globalNotifications;
 
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -119,37 +120,44 @@
     
     
     //////////Schedule local notifications
-    
-    if([self.switchNotification isOn])
+    if(self.globalNotifications==YES)
     {
-        NSLog(@"schedule notifications");
+        if([self.switchNotification isOn])
+        {
+            NSLog(@"schedule notifications");
         
-    UILocalNotification *localNotif=[[UILocalNotification alloc]init];
-    if(localNotif==nil)
-    {
-        NSLog(@"no notif init");
+            UILocalNotification *localNotif=[[UILocalNotification alloc]init];
+            if(localNotif==nil)
+                {
+                    NSLog(@"no notif init");
+                }
+    
+            localNotif.fireDate=pickerDate;
+            localNotif.timeZone=[NSTimeZone defaultTimeZone];
+            
+            localNotif.alertBody=self.titleField.text;
+            localNotif.alertAction=@"View";
+    
+            localNotif.soundName=UILocalNotificationDefaultSoundName;
+            localNotif.applicationIconBadgeNumber=1;
+    
+    
+            NSDictionary *infoDict=[NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
+            localNotif.userInfo=infoDict;
+    
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    
+        }
+        else
+        {
+            NSLog(@"not scheduled notification");
+        }
+        
     }
-    
-    localNotif.fireDate=pickerDate;
-    localNotif.timeZone=[NSTimeZone defaultTimeZone];
-    
-    localNotif.alertBody=self.titleField.text;
-    localNotif.alertAction=@"View";
-    
-    localNotif.soundName=UILocalNotificationDefaultSoundName;
-    localNotif.applicationIconBadgeNumber=1;
-    
-    
-    NSDictionary *infoDict=[NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
-    localNotif.userInfo=infoDict;
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-    
-    }
-    else
-    {
-        NSLog(@"not scheduled notification");
-    }
+    else{
+        NSLog(@"global notif off");    }
+     
+        
     /////////
     
     [self.managedObjectContext save:nil];
@@ -157,6 +165,8 @@
     [self.navigationController popViewControllerAnimated:YES];
         
     }
+    
+
     
 }
 

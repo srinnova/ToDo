@@ -52,7 +52,12 @@
     
     fetchRequest.sortDescriptors=[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"created"  ascending:YES]];
     
-    
+    if(self.notifications==nil)
+    {
+        self.notifications=YES;
+        
+        NSLog(@"set notif glob to YES");
+    }
     self.lists=[self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     [self.tableView reloadData];
 
@@ -110,6 +115,9 @@
         ToDoListItemListViewController *listItemList=segue.destinationViewController;
         listItemList.list=[self.lists objectAtIndex:self.tableView.indexPathForSelectedRow.row];
         listItemList.bcgColor=self.color;
+        listItemList.globalNotif=self.notifications;
+        BOOL *ss=self.notifications;
+        NSLog(@" valuee i %i",ss);
     }
     
     if([segue.identifier isEqualToString:@"ListToEditListSegue"]){
