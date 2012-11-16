@@ -61,6 +61,8 @@
         
         NSLog(@"set notif glob to YES");
     }
+    
+    
     self.lists=[self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     [self.tableView reloadData];
 
@@ -76,7 +78,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark- IBActions
@@ -126,7 +127,6 @@
     if([segue.identifier isEqualToString:@"ListToEditListSegue"]){
         
         ToDoEditListViewController *edit=segue.destinationViewController;
-       //edit.list.title=@"titleeee";
         edit.listTitle=@"hythj";
         edit.list=self.listForEdit;
         edit.back=self.color;
@@ -228,7 +228,8 @@
     if(indexPath==nil){
         NSLog(@"ne e selentiran objekt");
     }
-    else{
+    else
+    {
     [self performSegueWithIdentifier:@"ListToEditListSegue" sender:self];
         
         self.listForEdit=[self.lists objectAtIndex:indexPath.row];

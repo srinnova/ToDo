@@ -138,10 +138,7 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
-    //cell.backgroundColor=self.bcg.color;
-    //cell.textLabel.backgroundColor=self.bcg.color;
+
     if(self.bcgColor==nil)
     {
         cell.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];

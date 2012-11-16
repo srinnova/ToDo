@@ -23,7 +23,9 @@
 
 -(IBAction)save:(id)sender;
 
-
+-(void)scheduleLocalNotification:(UILocalNotification *) notification;
+-(void)cancelLocalNotification:(UILocalNotification *) notification;
+-(void)cancelLocalNotificationWithTitle:(NSString *) notifTitle;
 
 
 @end
@@ -75,6 +77,8 @@
     else if(self.listItem.notification==[NSNumber numberWithInt:1])
     {
         self.prevScheduled=YES;
+        
+        [self.datePicker setDate:self.listItem.dueDateTime];
         
         NSLog(@"selflistitem set prev sched YES");
     }
@@ -177,6 +181,14 @@
                 NSLog(@"schedule notifications");
                 
                 UILocalNotification *localNotif=[[UILocalNotification alloc]init];
+                
+                
+                ///
+                NSLog(@"scedule local notif via method");
+                [self scheduleLocalNotification:localNotif];
+                
+                
+                /*
                 if(localNotif==nil)
                 {
                     NSLog(@"no notif init");
@@ -196,13 +208,18 @@
                 localNotif.userInfo=infoDict;
     
                 [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-                
+                */
                 self.prevScheduled=YES;
+                 
             }
             
             else
             {
                 
+                NSLog(@"sceduled before, remove prev, add new" );
+                NSLog(@"remove notifica via method");
+                [self cancelLocalNotificationWithTitle:self.listItem.title];
+                /* tuksss
                 NSLog(@"sceduled before, remove prev, add new" );
                 
                 
@@ -221,15 +238,26 @@
                 
                 if(hasNotif==YES)
                 {
+                    
+                    
                     NSLog(@"canceling notif");
                     NSLog(@"%@",notifToCancel);
                     [[UIApplication sharedApplication] cancelLocalNotification:notifToCancel];
-                    
+                    */
                     
                 ///////
                     NSLog(@"re-schedule notification");
                     
                     UILocalNotification *localNotif=[[UILocalNotification alloc]init];
+                    
+                    
+                    NSLog(@"reescedule local notif via method");
+                    [self scheduleLocalNotification:localNotif];
+                    
+                    
+                    self.prevScheduled=YES;
+                    
+                    /*
                     if(localNotif==nil)
                     {
                         NSLog(@"no notif init");
@@ -251,10 +279,11 @@
                     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
                     
                     NSLog(@"sheduled this notif %@",localNotif);
+                     */
                     
                     /////////
                         
-                }
+                /////////////////////////tuka}
                 
                 
             }
@@ -266,6 +295,11 @@
             
             ////if scheduled before, remove the sceduled notification
             NSLog(@"removing if prev scheduled, couse now switch i off");
+            
+            NSLog(@"remove via methid");
+            [self cancelLocalNotificationWithTitle:self.listItem.title];
+            
+            /*
             UILocalNotification *notifToCancel=nil;
             BOOL hasNotif=NO;
             
@@ -286,7 +320,7 @@
                 [[UIApplication sharedApplication] cancelLocalNotification:notifToCancel];
             
             
-            }
+            }*/
             
             self.listItem.notification=[NSNumber numberWithInt:0];
             self.prevScheduled=NO;
@@ -333,5 +367,83 @@
     
     
 }
+
+-(void)scheduleLocalNotification:(UILocalNotification *)notification{
+    
+   
+    if(notification==nil)
+    {
+        NSLog(@"no notif init");
+    }
+    
+    NSDate *pickerDate=[self.datePicker date];
+    
+    notification.fireDate=pickerDate;
+    notification.timeZone=[NSTimeZone defaultTimeZone];
+    
+    notification.alertBody=self.titleField.text;
+    notification.alertAction=@"View";
+    
+    notification.soundName=UILocalNotificationDefaultSoundName;
+    notification.applicationIconBadgeNumber=1;
+    
+    
+    NSDictionary *infoDict=[NSDictionary dictionaryWithObject:self.listItem.title forKey:@"key"];
+    notification.userInfo=infoDict;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    
+    NSLog(@"sheduled via method notif %@",notification);
+
+    
+}
+
+
+//////sredi ja funkcijata
+-(void)cancelLocalNotification:(UILocalNotification *)notification{
+    
+    
+    UILocalNotification *notifToCancel=nil;
+    BOOL hasNotif=NO;
+    
+    for(UILocalNotification *someNotif in [[UIApplication sharedApplication] scheduledLocalNotifications])
+    {
+        if([[someNotif.userInfo objectForKey:@"key"] isEqualToString:self.listItem.title])
+        {
+            notifToCancel=someNotif;
+            hasNotif=YES;
+            break;
+        }
+    }
+    
+    if(hasNotif==YES)
+    {
+        NSLog(@"canceling notif");
+        NSLog(@"%@",notifToCancel);
+        [[UIApplication sharedApplication] cancelLocalNotification:notifToCancel];
+    }
+    
+}
+-(void)cancelLocalNotificationWithTitle:(NSString *)notifTitle{
+    
+    UILocalNotification *notifToCancel=nil;
+    BOOL hasNotif=NO;
+    
+    for(UILocalNotification *someNotif in [[UIApplication sharedApplication] scheduledLocalNotifications])
+    {
+        if([[someNotif.userInfo objectForKey:@"key"] isEqualToString:notifTitle])
+        {
+            notifToCancel=someNotif;
+            hasNotif=YES;
+            break;
+        }
+    }
+    
+    if(hasNotif==YES)
+    {
+        NSLog(@"canceling notif");
+        NSLog(@"%@",notifToCancel);
+        [[UIApplication sharedApplication] cancelLocalNotification:notifToCancel];
+    }}
 
 @end
