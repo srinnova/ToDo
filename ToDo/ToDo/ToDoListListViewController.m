@@ -24,6 +24,8 @@
 
 @property (nonatomic,weak) ToDoList *listForEdit;
 
+@property(nonatomic,strong)NSArray *listItemsPerList;
+
 
 
 -(IBAction)addList:(id)sender;
@@ -37,6 +39,7 @@
 
 @synthesize color=_color;
 @synthesize notifications=_notifications;
+@synthesize listItemsPerList=_listItemsPerList;
 
 
 
@@ -174,10 +177,26 @@
     
     
     
+    
+    
+    
     cell.textLabel.text=currentList.title;
+    /////////fetch number of list items for each list
+    
+    NSFetchRequest *fetchReq=[NSFetchRequest fetchRequestWithEntityName:@"ToDoListItem"];
+    
+    fetchReq.predicate=[NSPredicate predicateWithFormat:@"list.title=%@",currentList.title];
+    
+
+    self.listItemsPerList=[self.managedObjectContext executeFetchRequest:fetchReq error:nil];
+    
+    int i=0;
+    i=self.listItemsPerList.count;
     
     
-    
+    NSString *noli=[NSString stringWithFormat:@"%d",i];
+    ////////
+    cell.detailTextLabel.text=[NSString stringWithFormat:@"ToDo Items: %@",noli];
     
     ////long press
     
