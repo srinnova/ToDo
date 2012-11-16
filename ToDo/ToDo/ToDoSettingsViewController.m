@@ -32,10 +32,18 @@
 @synthesize list=_list;
 @synthesize section=_section;
 @synthesize cellColl=_cellColl;
+@synthesize previousNotifSetting=_previousNotifSetting;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if(self.previousNotifSetting == YES)
+    {
+    [self.notifications setOn:YES];
+    }
+    else{
+        [self.notifications setOn:NO];
+    }
 
 }
 
@@ -82,19 +90,18 @@
         
         if(self.cellColl == 0)
         {
-            self.list.color=[UIColor colorWithRed:0 green:0 blue:1 alpha:1];
-                    NSLog(@"list color blue");
+            self.list.color=[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:255.0/255.0 alpha:1];                    NSLog(@"list color blue");
         }
         else if(self.cellColl == 1)
         {
-            self.list.color=[UIColor colorWithRed:1 green:0 blue:1 alpha:1];
-                     NSLog(@"list color purple");
+            self.list.color=[UIColor colorWithRed:255.0/255.0 green:105.0/255.0 blue:180.0/255.0 alpha:1];
+                     NSLog(@"list color pink");
             
         }
         else if(self.cellColl == 2)
         {
-            self.list.color=[UIColor colorWithRed:0.5 green:0 blue:1 alpha:1];
-                      NSLog(@"list color pink");
+            self.list.color=[UIColor colorWithRed:76.0/255.0 green:0.0/255.0 blue:153.0/255.0 alpha:1];
+                      NSLog(@"list color purple");
         }
         else if(self.cellColl == 3)
         {

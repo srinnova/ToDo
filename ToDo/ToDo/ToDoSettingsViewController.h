@@ -13,4 +13,6 @@
 
 @property(nonatomic,strong) ToDoListListViewController *list;
 
+@property(nonatomic) BOOL *previousNotifSetting;
+
 @end

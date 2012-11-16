@@ -37,6 +37,8 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+
+    
     if(textField==self.titleField)
     {
         [textField resignFirstResponder];
@@ -71,6 +73,17 @@
 
 #pragma mark - IBActions
 -(void)save:(id)sender{
+    
+    /*if([self.switchNotification isOn])
+    {
+        if(self.globalNotifications==NO)
+        {
+            
+            [[[UIAlertView alloc]
+              initWithTitle:@"Allert" message:@"Global notifications are turned of" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
+            
+            [self.switchNotification setOn:NO];        }
+    }*/
     
     if([self.titleField.text isEqualToString:@""])
     {
@@ -151,11 +164,15 @@
         else
         {
             NSLog(@"not scheduled notification");
+            
         }
         
     }
-    else{
-        NSLog(@"global notif off");    }
+    else
+    {
+        NSLog(@"global notif off");
+
+    }
      
         
     /////////

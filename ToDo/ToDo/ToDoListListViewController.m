@@ -142,6 +142,7 @@
         
         ToDoSettingsViewController *settings=segue.destinationViewController;
         settings.list=self;
+        settings.previousNotifSetting=self.notifications;
         
     }
 }
