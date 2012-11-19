@@ -12,4 +12,8 @@
 
 @synthesize color=_color;
 
+-(void)myMethod:(NSString *)string{
+    NSLog(@"printing from myMethod %@",string);
+}
+
 @end

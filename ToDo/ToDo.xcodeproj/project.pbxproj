@@ -27,6 +27,7 @@
 		4190679F164AB02600953614 /* ToDoList+Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4190679E164AB02500953614 /* ToDoList+Customization.m */; };
 		41B23C611653FD8700BB1556 /* ToDoHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B23C601653FD8600BB1556 /* ToDoHelpViewController.m */; };
 		41B23C64165402BE00BB1556 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41B23C63165402BE00BB1556 /* img.jpg */; };
+		41C1C240165A22C200029DA5 /* ToDoNotificationManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C1C23F165A22C200029DA5 /* ToDoNotificationManagement.m */; };
 		41C5100E1654E27400BAC377 /* ToDoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C5100D1654E27400BAC377 /* ToDoSettingsViewController.m */; };
 		41C510121654E8EA00BAC377 /* pink.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41C510111654E8EA00BAC377 /* pink.jpg */; };
 		41C510141654E8F200BAC377 /* blues.png in Resources */ = {isa = PBXBuildFile; fileRef = 41C510131654E8F200BAC377 /* blues.png */; };
@@ -67,6 +68,8 @@
 		41B23C5F1653FD8600BB1556 /* ToDoHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoHelpViewController.h; sourceTree = "<group>"; };
 		41B23C601653FD8600BB1556 /* ToDoHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoHelpViewController.m; sourceTree = "<group>"; };
 		41B23C63165402BE00BB1556 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
+		41C1C23E165A22C200029DA5 /* ToDoNotificationManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoNotificationManagement.h; sourceTree = "<group>"; };
+		41C1C23F165A22C200029DA5 /* ToDoNotificationManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoNotificationManagement.m; sourceTree = "<group>"; };
 		41C5100C1654E27400BAC377 /* ToDoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoSettingsViewController.h; sourceTree = "<group>"; };
 		41C5100D1654E27400BAC377 /* ToDoSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoSettingsViewController.m; sourceTree = "<group>"; };
 		41C510111654E8EA00BAC377 /* pink.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pink.jpg; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				41C5100D1654E27400BAC377 /* ToDoSettingsViewController.m */,
 				41C510171655002100BAC377 /* ToDoBcgColor.h */,
 				41C510181655002200BAC377 /* ToDoBcgColor.m */,
+				41C1C23E165A22C200029DA5 /* ToDoNotificationManagement.h */,
+				41C1C23F165A22C200029DA5 /* ToDoNotificationManagement.m */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				41B23C611653FD8700BB1556 /* ToDoHelpViewController.m in Sources */,
 				41C5100E1654E27400BAC377 /* ToDoSettingsViewController.m in Sources */,
 				41C510191655002200BAC377 /* ToDoBcgColor.m in Sources */,
+				41C1C240165A22C200029DA5 /* ToDoNotificationManagement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

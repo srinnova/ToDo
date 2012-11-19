@@ -10,11 +10,16 @@
 #import "ToDoAppDelegate.h"
 #import "ToDoListItem.h"
 
+#import "ToDoBcgColor.h"
+#import "ToDoNotificationManagement.h"
+
 @interface ToDoListItemDetailsViewController ()
 
 @property (nonatomic,weak) IBOutlet UITextField *titleField;
 @property (nonatomic,weak) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic,weak) IBOutlet UISwitch *switchNotification;
+
+
 
 @property (nonatomic) BOOL *prevScheduled;
 
@@ -39,6 +44,7 @@
 @synthesize back=_back;
 @synthesize globalNotifications=_globalNotifications;
 @synthesize prevScheduled=_prevScheduled;
+@synthesize myTest=_myTest;
 
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -116,8 +122,8 @@
             
             [self.switchNotification setOn:NO];        }
     }*/
-    
-    
+    self.myTest=[[ToDoBcgColor alloc] init];
+    [self.myTest myMethod:@"fcefcker"];
     ////if no text insered in textInput
     
     if([self.titleField.text isEqualToString:@""])
@@ -180,13 +186,34 @@
                 NSLog(@"not prev scheduled");
                 NSLog(@"schedule notifications");
                 
+                /* Schedule via method
+                 
                 UILocalNotification *localNotif=[[UILocalNotification alloc]init];
-                
-                
-                ///
                 NSLog(@"scedule local notif via method");
                 [self scheduleLocalNotification:localNotif];
+                 
+                */
                 
+                ToDoNotificationManagement *notifManagement=[[ToDoNotificationManagement alloc]init];
+                notifManagement.notification=[[UILocalNotification alloc]init];
+                if(notifManagement.notification==nil)
+                {
+                    NSLog(@"no notif init");
+                }
+                notifManagement.notification.fireDate=pickerDate;
+                notifManagement.notification.timeZone=[NSTimeZone defaultTimeZone];
+                notifManagement.notification.alertBody=self.titleField.text;
+                notifManagement.notification.alertAction=@"View";
+                
+                notifManagement.notification.soundName=UILocalNotificationDefaultSoundName;
+                notifManagement.notification.applicationIconBadgeNumber=1;
+                
+                
+                NSDictionary *infoDict=[NSDictionary dictionaryWithObject:self.listItem.title forKey:@"key"];
+                notifManagement.notification.userInfo=infoDict;
+                
+                NSLog(@"use class method");
+                [notifManagement scheduleLocalNotification:notifManagement.notification];
                 
                 /*
                 if(localNotif==nil)
@@ -217,8 +244,13 @@
             {
                 
                 NSLog(@"sceduled before, remove prev, add new" );
-                NSLog(@"remove notifica via method");
-                [self cancelLocalNotificationWithTitle:self.listItem.title];
+                NSLog(@"remove notification via class via method");
+                
+                ToDoNotificationManagement *notifManagement=[[ToDoNotificationManagement alloc]init];
+                [notifManagement cancelLocalNotificationWithTitle:self.listItem.title];
+               
+              ////////// method  [self cancelLocalNotificationWithTitle:self.listItem.title];
+                
                 /* tuksss
                 NSLog(@"sceduled before, remove prev, add new" );
                 
@@ -238,8 +270,6 @@
                 
                 if(hasNotif==YES)
                 {
-                    
-                    
                     NSLog(@"canceling notif");
                     NSLog(@"%@",notifToCancel);
                     [[UIApplication sharedApplication] cancelLocalNotification:notifToCancel];
@@ -247,15 +277,38 @@
                     
                 ///////
                     NSLog(@"re-schedule notification");
-                    
+                
+                    /* local notif via method
                     UILocalNotification *localNotif=[[UILocalNotification alloc]init];
-                    
-                    
                     NSLog(@"reescedule local notif via method");
                     [self scheduleLocalNotification:localNotif];
-                    
-                    
-                    self.prevScheduled=YES;
+                    */
+                
+                    NSLog(@"schedule local notif via class");
+                
+                ToDoNotificationManagement *notifManagement1=[[ToDoNotificationManagement alloc]init];
+                notifManagement1.notification=[[UILocalNotification alloc]init];
+                if(notifManagement1.notification==nil)
+                {
+                    NSLog(@"no notif init");
+                }
+                notifManagement1.notification.fireDate=pickerDate;
+                notifManagement1.notification.timeZone=[NSTimeZone defaultTimeZone];
+                notifManagement1.notification.alertBody=self.titleField.text;
+                notifManagement1.notification.alertAction=@"View";
+                
+                notifManagement1.notification.soundName=UILocalNotificationDefaultSoundName;
+                notifManagement1.notification.applicationIconBadgeNumber=1;
+                
+                
+                NSDictionary *infoDict=[NSDictionary dictionaryWithObject:self.listItem.title forKey:@"key"];
+                notifManagement1.notification.userInfo=infoDict;
+                
+                NSLog(@"use class method");
+                [notifManagement scheduleLocalNotification:notifManagement1.notification];
+                
+                
+                self.prevScheduled=YES;
                     
                     /*
                     if(localNotif==nil)
@@ -296,8 +349,12 @@
             ////if scheduled before, remove the sceduled notification
             NSLog(@"removing if prev scheduled, couse now switch i off");
             
-            NSLog(@"remove via methid");
-            [self cancelLocalNotificationWithTitle:self.listItem.title];
+            NSLog(@"removing if prev scheduled, via class");            
+            ToDoNotificationManagement *notifManagement=[[ToDoNotificationManagement alloc]init];
+            [notifManagement cancelLocalNotificationWithTitle:self.listItem.title];
+            
+            ///////NSLog(@"remove via methid");
+            ///////[self cancelLocalNotificationWithTitle:self.listItem.title];
             
             /*
             UILocalNotification *notifToCancel=nil;
@@ -444,6 +501,7 @@
         NSLog(@"canceling notif");
         NSLog(@"%@",notifToCancel);
         [[UIApplication sharedApplication] cancelLocalNotification:notifToCancel];
-    }}
+    }
+}
 
 @end
